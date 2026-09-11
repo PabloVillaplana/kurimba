@@ -308,23 +308,25 @@ export const steps = [
 ] as const;
 
 /* ------------------------------------------------------------
- * Persona facilitadora
+ * Sobre Kurimba
  * ---------------------------------------------------------- */
-export const facilitator = {
-  name: "[Nombre de la persona facilitadora]", // [PENDIENTE]
-  role: "Fundadora de Kurimba", // [PENDIENTE] ajustar
-  /** No inventar certificaciones: completar con la formación real. */
-  certifications: [
-    "[Formación o certificación 1]",
-    "[Formación o certificación 2]",
-    "[Formación o certificación 3]",
+export const about = {
+  title: "Sobre Kurimba",
+  intro:
+    "Un espacio creado para que cualquier persona pueda detenerse, respirar y volver a sentirse en casa consigo misma.",
+  paragraphs: [
+    "Kurimba nace de una idea sencilla: en medio del ritmo de todos los días, necesitamos lugares donde bajar la velocidad. Un espacio tranquilo, cálido y sin prisa, donde el bienestar no sea un lujo sino un momento que te regalás.",
+    "Ofrecemos sesiones y experiencias holísticas, como el Reiki y la sesión holística personalizada, pensadas para acompañarte a liberar tensiones, recuperar tu equilibrio y reconectar con vos. No hay protocolos complicados ni promesas exageradas: solo un acompañamiento cercano, respetuoso y a tu ritmo.",
+    "Creemos en una espiritualidad sencilla y moderna, abierta a todas las personas, sin importar si es tu primera sesión o si ya conocés estas prácticas. Llegás como estás, y desde ahí empezamos.",
   ],
-  story:
-    "[Texto temporal editable] Aquí va la historia personal: cómo llegó al mundo del bienestar, qué la motivó a formarse y qué descubrió en el camino.",
-  motivation:
-    "[Texto temporal editable] Aquí va la motivación para crear Kurimba: qué quiere ofrecerle a cada persona que llega y qué significa este espacio.",
-  photoHint:
-    "Foto sugerida: retrato de medio cuerpo, luz natural, fondo neutro o del estudio, expresión cálida.",
+  /** Valores que se muestran como pequeñas tarjetas. */
+  values: [
+    { title: "Cercanía", text: "Te escuchamos antes, durante y después de cada sesión." },
+    { title: "Respeto", text: "Vos decidís qué querés vivir y qué preferís dejar fuera." },
+    { title: "Calma", text: "Un ambiente pensado para que el cuerpo y la mente descansen." },
+  ],
+  imageHint:
+    "Foto sugerida: el espacio de Kurimba con luz natural, plantas, textiles en tonos tierra y una camilla o cojines. Ambiente cálido y ordenado.",
 } as const;
 
 /* ------------------------------------------------------------

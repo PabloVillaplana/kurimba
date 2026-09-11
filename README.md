@@ -41,7 +41,7 @@ Toda la información editable vive en **`src/config/site.ts`**:
 | Sesiones, duración, precios  | `sessions`                  |
 | Beneficios                   | `benefits`                  |
 | Pasos de una sesión          | `steps`                     |
-| Persona facilitadora         | `facilitator`               |
+| Texto sobre Kurimba          | `about`                     |
 | Testimonios                  | `testimonials`              |
 | Preguntas frecuentes         | `faqs`                      |
 | Dominio público (SEO)        | `brand.url`                 |
@@ -82,7 +82,7 @@ Mientras no haya fotos definitivas, cada espacio muestra un placeholder con la i
 | `/sesiones`                   | Índice de sesiones                                   |
 | `/sesiones/reiki`             | Página dedicada de Reiki (Service + FAQPage schema)  |
 | `/sesiones/sesion-holistica`  | Página dedicada de la sesión holística personalizada |
-| `/nosotros`                   | Historia, facilitadora y testimonios                 |
+| `/nosotros`                   | Sobre Kurimba y testimonios                          |
 | `/preguntas-frecuentes`       | FAQ con datos estructurados FAQPage                  |
 | `/contacto`                   | Contacto y formulario                                |
 | `/aviso-de-privacidad`        | Aviso de privacidad (texto editable)                 |

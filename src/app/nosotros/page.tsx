@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { routes } from "@/config/site";
+import { about, routes } from "@/config/site";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { About } from "@/components/sections/About";
 import { Intro } from "@/components/sections/Intro";
@@ -18,8 +18,8 @@ export default function AboutPage() {
     <>
       <PageHeader
         eyebrow="Nosotros"
-        title="Sobre Kurimba"
-        text="Un proyecto que nace del deseo de crear un lugar donde cualquier persona pueda detenerse, respirar y volver a sentirse en casa consigo misma."
+        title={about.title}
+        text={about.intro}
         crumbs={[{ label: "Nosotros" }]}
       />
       <About hideHeading />
