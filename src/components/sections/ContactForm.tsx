@@ -228,7 +228,7 @@ function Field({
 
   return (
     <div className={className}>
-      <label htmlFor={id} className="mb-2 block text-xs tracking-[0.18em] text-stone uppercase">
+      <label htmlFor={id} className="mb-2 block text-xs tracking-[0.18em] text-bark/80 uppercase">
         {label}
       </label>
       {textarea ? (

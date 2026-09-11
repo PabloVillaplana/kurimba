@@ -50,7 +50,7 @@ export function SessionCard({ session }: Props) {
           {session.page && !comingSoon ? (
             <Link
               href={routes.session(session.id)}
-              className="transition-colors hover:text-terracotta"
+              className="transition-colors hover:text-terracotta-dark"
             >
               {session.name}
             </Link>
@@ -93,7 +93,7 @@ export function SessionCard({ session }: Props) {
           {session.page && !comingSoon ? (
             <Link
               href={routes.session(session.id)}
-              className="inline-flex items-center gap-1.5 text-sm text-terracotta underline-offset-4 hover:underline"
+              className="inline-flex items-center gap-1.5 text-sm text-terracotta-dark underline-offset-4 hover:underline"
             >
               Conocé más sobre esta sesión
               <ArrowRight className="size-3.5" aria-hidden="true" />

@@ -15,7 +15,6 @@ export function Logo({ variant = "dark", withTagline = false, className }: Props
   return (
     <Link
       href="/"
-      aria-label={`${brand.name}, ir al inicio`}
       className={cn("group inline-flex items-center gap-3", className)}
     >
       <KurimbaSymbol className="h-9 w-auto text-terracotta transition-transform duration-500 group-hover:-translate-y-0.5" />
@@ -32,7 +31,7 @@ export function Logo({ variant = "dark", withTagline = false, className }: Props
           <span
             className={cn(
               "mt-1.5 text-[0.6rem] font-light uppercase tracking-[0.3em]",
-              isLight ? "text-clay" : "text-stone",
+              isLight ? "text-clay" : "text-stone-light",
             )}
           >
             {brand.tagline}

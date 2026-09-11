@@ -59,7 +59,7 @@ export function Testimonials() {
                 className="relative flex w-[85%] shrink-0 snap-center flex-col rounded-[2rem] border border-clay/60 bg-cream p-8 shadow-soft transition-transform duration-300 sm:w-[70%] lg:w-auto lg:hover:-translate-y-1"
               >
                 {t.isPlaceholder ? (
-                  <span className="absolute top-5 right-5 rounded-full border border-dashed border-terracotta/60 px-2.5 py-0.5 text-[0.6rem] tracking-[0.2em] text-terracotta uppercase">
+                  <span className="absolute top-5 right-5 rounded-full border border-dashed border-terracotta/60 px-2.5 py-0.5 text-[0.6rem] tracking-[0.2em] text-terracotta-dark uppercase">
                     Ejemplo
                   </span>
                 ) : null}
@@ -100,11 +100,15 @@ export function Testimonials() {
                 aria-selected={active === i}
                 aria-label={`Testimonio ${i + 1}`}
                 onClick={() => scrollTo(i)}
-                className={cn(
-                  "h-2 rounded-full transition-all duration-300",
-                  active === i ? "w-6 bg-terracotta" : "w-2 bg-clay hover:bg-stone",
-                )}
-              />
+                className="flex size-7 items-center justify-center rounded-full"
+              >
+                <span
+                  className={cn(
+                    "block h-2 rounded-full transition-all duration-300",
+                    active === i ? "w-6 bg-terracotta" : "w-2 bg-clay hover:bg-stone",
+                  )}
+                />
+              </button>
             ))}
           </div>
           <button

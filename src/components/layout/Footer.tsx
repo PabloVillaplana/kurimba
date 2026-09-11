@@ -24,7 +24,7 @@ export function Footer() {
           <p className="mt-6 font-display text-xl leading-snug text-cream/90 italic">
             {brand.slogan}
           </p>
-          <p className="mt-4 text-sm leading-relaxed text-clay/80">
+          <p className="mt-4 text-sm leading-relaxed text-clay/90">
             Sesiones y experiencias holísticas en Costa Rica para bajar el ritmo, liberar tensiones
             y reconectar con vos.
           </p>
@@ -76,7 +76,7 @@ export function Footer() {
                 <span>
                   {contact.location.short}
                   <br />
-                  <span className="text-clay/70">{contact.location.address}</span>
+                  <span className="text-clay/85">{contact.location.address}</span>
                 </span>
               </a>
             </li>
@@ -92,7 +92,7 @@ export function Footer() {
                 <Clock className="mt-0.5 size-4 shrink-0 text-terracotta" aria-hidden="true" />
                 <span>
                   <span className="block text-cream/90">{h.days}</span>
-                  <span className="text-clay/70">{h.time}</span>
+                  <span className="text-clay/85">{h.time}</span>
                 </span>
               </li>
             ))}
@@ -120,7 +120,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-cream/10">
-        <div className="container-k flex flex-col gap-4 py-6 text-xs text-clay/70 sm:flex-row sm:items-center sm:justify-between">
+        <div className="container-k flex flex-col gap-4 py-6 text-xs text-clay/85 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {year} {brand.name}. Todos los derechos reservados.
           </p>

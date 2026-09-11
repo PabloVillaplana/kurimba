@@ -57,8 +57,8 @@ export function Navbar() {
                 href={link.href}
                 aria-current={pathname === link.href ? "page" : undefined}
                 className={cn(
-                  "text-sm tracking-wide transition-colors duration-300 hover:text-terracotta",
-                  pathname === link.href ? "text-terracotta" : "text-bark/80",
+                  "text-sm tracking-wide transition-colors duration-300 hover:text-terracotta-dark",
+                  pathname === link.href ? "text-terracotta-dark" : "text-bark/80",
                 )}
               >
                 {link.label}
@@ -112,8 +112,8 @@ export function Navbar() {
                   tabIndex={open ? 0 : -1}
                   aria-current={pathname === link.href ? "page" : undefined}
                   className={cn(
-                    "block rounded-xl px-4 py-3 font-display text-2xl transition-colors hover:bg-sand hover:text-terracotta",
-                    pathname === link.href ? "text-terracotta" : "text-bark",
+                    "block rounded-xl px-4 py-3 font-display text-2xl transition-colors hover:bg-sand hover:text-terracotta-dark",
+                    pathname === link.href ? "text-terracotta-dark" : "text-bark",
                   )}
                 >
                   {link.label}

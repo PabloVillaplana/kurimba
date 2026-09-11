@@ -6,10 +6,12 @@
 @theme {
   /* Paleta de marca (tomada del logotipo) */
   --color-bark: #3b3430; /* marrón profundo: textos y fondos oscuros */
-  --color-stone: #8a8178; /* gris cálido: textos secundarios */
+  --color-stone: #6b625a; /* gris cálido (oscurecido para contraste AA): textos secundarios */
+  --color-stone-light: #8a8178; /* gris del logo: solo decorativo */
   --color-terracotta: #a9764b; /* acento principal */
-  --color-terracotta-dark: #8c5f3a;
-  --color-gold: #c9a46a; /* detalles dorados */
+  --color-terracotta-dark: #8c5f3a; /* terracota para texto pequeño y botones (AA) */
+  --color-terracotta-deeper: #754d2d;
+  --color-gold: #dcc08f; /* detalles dorados (AA sobre verde profundo y marrón) */
 
   /* Neutros cálidos */
   --color-cream: #faf7f2; /* blanco crema: fondo base */
@@ -147,7 +149,7 @@ body {
   font-size: 0.75rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--color-terracotta);
+  color: var(--color-terracotta-dark);
   font-weight: 500;
 }
 
