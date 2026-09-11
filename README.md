@@ -93,15 +93,19 @@ Mientras no haya fotos definitivas, cada espacio muestra un placeholder con la i
 Cada sesión con `status: "available"` y un bloque `page` en `sessions` genera automáticamente su
 página en `/sesiones/[id]` y entra al sitemap. Las sesiones `coming-soon` no generan página.
 
-Todas las páginas incluyen título y descripción propios, URL canónica, Open Graph, migas de pan
-con `BreadcrumbList` y datos estructurados de negocio local en la portada.
+Todas las páginas incluyen título (≤ 60 caracteres) y descripción (≤ 155) propios, URL canónica,
+Open Graph y Twitter con imagen 1200x630 generada desde el logo (`src/app/opengraph-image.tsx`),
+migas de pan con `BreadcrumbList`, y datos estructurados `Organization`, `WebSite`,
+`HealthAndBeautyBusiness` (teléfono, horarios, cobertura y catálogo de sesiones), `Service` y
+`FAQPage`. El contenido se sirve visible en el HTML del servidor (las animaciones se aplican solo
+en el cliente). Lighthouse en producción: SEO 100, accesibilidad 100, buenas prácticas 100.
 
 ### Enviar el sitemap a Google
 
 1. Entrá a [Google Search Console](https://search.google.com/search-console) y agregá la propiedad
    con el dominio del sitio (`brand.url` en `src/config/site.ts`).
-2. Verificá la propiedad (registro DNS o etiqueta HTML; si usás etiqueta, agregala en
-   `metadata.verification.google` dentro de `src/app/layout.tsx`).
+2. Verificá la propiedad (registro DNS o etiqueta HTML; si usás etiqueta, pegá el código en
+   `seo.googleSiteVerification` dentro de `src/config/site.ts` y redeployá).
 3. En **Sitemaps**, enviá `https://TU-DOMINIO/sitemap.xml`.
 4. Cuando cambiés el dominio, actualizá `brand.url`: el sitemap, robots y canónicas se regeneran solos.
 
