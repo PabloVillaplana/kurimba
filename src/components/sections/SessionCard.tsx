@@ -1,6 +1,7 @@
-import { Check, Clock, MessageCircle, Tag } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Check, Clock, MessageCircle, Tag } from "lucide-react";
 import type { Session } from "@/config/site";
-import { whatsapp } from "@/config/site";
+import { routes, whatsapp } from "@/config/site";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
@@ -45,7 +46,18 @@ export function SessionCard({ session }: Props) {
       </div>
 
       <div className="flex flex-1 flex-col p-7">
-        <h3 className="font-display text-3xl leading-tight font-medium text-bark">{session.name}</h3>
+        <h3 className="font-display text-3xl leading-tight font-medium text-bark">
+          {session.page && !comingSoon ? (
+            <Link
+              href={routes.session(session.id)}
+              className="transition-colors hover:text-terracotta"
+            >
+              {session.name}
+            </Link>
+          ) : (
+            session.name
+          )}
+        </h3>
         <p className="mt-3 text-sm leading-relaxed text-stone">{session.description}</p>
 
         <dl className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm">
@@ -70,7 +82,16 @@ export function SessionCard({ session }: Props) {
           ))}
         </ul>
 
-        <div className="mt-auto pt-7">
+        <div className="mt-auto flex flex-col gap-3 pt-7">
+          {session.page && !comingSoon ? (
+            <Link
+              href={routes.session(session.id)}
+              className="inline-flex items-center gap-1.5 text-sm text-terracotta underline-offset-4 hover:underline"
+            >
+              Conocé más sobre esta sesión
+              <ArrowRight className="size-3.5" aria-hidden="true" />
+            </Link>
+          ) : null}
           {comingSoon ? (
             <Button href={buildWhatsAppUrl(whatsapp.defaultMessage)} variant="secondary" className="w-full">
               Avisame cuando esté lista

@@ -7,23 +7,43 @@ import { cn } from "@/lib/utils";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 
-export function FAQ() {
+type Props = {
+  items?: { question: string; answer: string }[];
+  title?: string;
+  text?: string;
+  /** Oculta el encabezado de sección (útil en páginas con su propio H1). */
+  hideHeading?: boolean;
+  id?: string;
+  className?: string;
+};
+
+export function FAQ({
+  items = faqs,
+  title = "Resolvemos tus dudas",
+  text = "Si tenés alguna otra pregunta, escribinos por WhatsApp y con gusto te respondemos.",
+  hideHeading = false,
+  id = "preguntas",
+  className = "bg-cream py-24 sm:py-32",
+}: Props) {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="preguntas" className="bg-cream py-24 sm:py-32">
+    <section id={id} className={className}>
       <div className="container-k">
-        <Reveal>
-          <SectionHeading
-            eyebrow="Preguntas frecuentes"
-            title="Resolvemos tus dudas"
-            text="Si tenés alguna otra pregunta, escribinos por WhatsApp y con gusto te respondemos."
-          />
-        </Reveal>
+        {hideHeading ? null : (
+          <Reveal>
+            <SectionHeading eyebrow="Preguntas frecuentes" title={title} text={text} />
+          </Reveal>
+        )}
 
         <Reveal delay={150}>
-          <div className="mx-auto mt-14 max-w-3xl divide-y divide-clay/70 rounded-[2rem] border border-clay/60 bg-linen/50 px-6 sm:px-10">
-            {faqs.map((faq, i) => {
+          <div
+            className={cn(
+              "mx-auto max-w-3xl divide-y divide-clay/70 rounded-[2rem] border border-clay/60 bg-linen/50 px-6 sm:px-10",
+              !hideHeading && "mt-14",
+            )}
+          >
+            {items.map((faq, i) => {
               const isOpen = open === i;
               const panelId = `faq-panel-${i}`;
               const buttonId = `faq-button-${i}`;

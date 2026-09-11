@@ -2,11 +2,14 @@ import { Clock, Mail, MapPin, MessageCircle } from "lucide-react";
 import { InstagramIcon } from "@/components/ui/icons";
 import { contact } from "@/config/site";
 import { WHATSAPP_URL } from "@/lib/whatsapp";
+import { cn } from "@/lib/utils";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { ContactForm } from "./ContactForm";
 
-export function Contact() {
+type Props = { hideHeading?: boolean };
+
+export function Contact({ hideHeading = false }: Props) {
   const items = [
     {
       icon: MessageCircle,
@@ -37,15 +40,22 @@ export function Contact() {
   return (
     <section id="contacto" className="bg-cream py-24 sm:py-32">
       <div className="container-k">
-        <Reveal>
-          <SectionHeading
-            eyebrow="Contacto"
-            title="Hablemos"
-            text="La forma más rápida de agendar es por WhatsApp. Si preferís, dejanos un mensaje y te escribimos."
-          />
-        </Reveal>
+        {hideHeading ? null : (
+          <Reveal>
+            <SectionHeading
+              eyebrow="Contacto"
+              title="Hablemos"
+              text="La forma más rápida de agendar es por WhatsApp. Si preferís, dejanos un mensaje y te escribimos."
+            />
+          </Reveal>
+        )}
 
-        <div className="mt-16 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+        <div
+          className={cn(
+            "grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16",
+            !hideHeading && "mt-16",
+          )}
+        >
           <Reveal>
             <ul className="space-y-4">
               {items.map(({ icon: Icon, label, value, href }) => (

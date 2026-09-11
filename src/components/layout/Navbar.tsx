@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { navLinks } from "@/config/site";
 import { WHATSAPP_URL } from "@/lib/whatsapp";
@@ -11,6 +13,7 @@ import { Logo } from "@/components/ui/Logo";
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -50,12 +53,16 @@ export function Navbar() {
         <ul className="hidden items-center gap-8 lg:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <a
+              <Link
                 href={link.href}
-                className="text-sm tracking-wide text-bark/80 transition-colors duration-300 hover:text-terracotta"
+                aria-current={pathname === link.href ? "page" : undefined}
+                className={cn(
+                  "text-sm tracking-wide transition-colors duration-300 hover:text-terracotta",
+                  pathname === link.href ? "text-terracotta" : "text-bark/80",
+                )}
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -99,14 +106,18 @@ export function Navbar() {
                   open ? "translate-x-0 opacity-100" : "-translate-x-3 opacity-0",
                 )}
               >
-                <a
+                <Link
                   href={link.href}
                   onClick={() => setOpen(false)}
                   tabIndex={open ? 0 : -1}
-                  className="block rounded-xl px-4 py-3 font-display text-2xl text-bark transition-colors hover:bg-sand hover:text-terracotta"
+                  aria-current={pathname === link.href ? "page" : undefined}
+                  className={cn(
+                    "block rounded-xl px-4 py-3 font-display text-2xl transition-colors hover:bg-sand hover:text-terracotta",
+                    pathname === link.href ? "text-terracotta" : "text-bark",
+                  )}
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
             <li className="mt-4 px-4">

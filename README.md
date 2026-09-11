@@ -74,6 +74,41 @@ Mientras no haya fotos definitivas, cada espacio muestra un placeholder con la i
 1. Guardá la foto en `public/` (por ejemplo `public/sesiones/reiki.jpg`).
 2. Pasá `image={{ src, alt }}` al componente `ImagePlaceholder` correspondiente, o completá el campo `image` de la sesión en la configuración.
 
+## Páginas y SEO
+
+| Ruta                          | Contenido                                            |
+| ----------------------------- | ---------------------------------------------------- |
+| `/`                           | Landing completa                                     |
+| `/sesiones`                   | Índice de sesiones                                   |
+| `/sesiones/reiki`             | Página dedicada de Reiki (Service + FAQPage schema)  |
+| `/sesiones/sesion-holistica`  | Página dedicada de la sesión holística personalizada |
+| `/nosotros`                   | Historia, facilitadora y testimonios                 |
+| `/preguntas-frecuentes`       | FAQ con datos estructurados FAQPage                  |
+| `/contacto`                   | Contacto y formulario                                |
+| `/aviso-de-privacidad`        | Aviso de privacidad (texto editable)                 |
+| `/sitemap.xml`                | Sitemap generado automáticamente                     |
+| `/robots.txt`                 | Robots con referencia al sitemap                     |
+
+Cada sesión con `status: "available"` y un bloque `page` en `sessions` genera automáticamente su
+página en `/sesiones/[id]` y entra al sitemap. Las sesiones `coming-soon` no generan página.
+
+Todas las páginas incluyen título y descripción propios, URL canónica, Open Graph, migas de pan
+con `BreadcrumbList` y datos estructurados de negocio local en la portada.
+
+### Enviar el sitemap a Google
+
+1. Entrá a [Google Search Console](https://search.google.com/search-console) y agregá la propiedad
+   con el dominio del sitio (`brand.url` en `src/config/site.ts`).
+2. Verificá la propiedad (registro DNS o etiqueta HTML; si usás etiqueta, agregala en
+   `metadata.verification.google` dentro de `src/app/layout.tsx`).
+3. En **Sitemaps**, enviá `https://TU-DOMINIO/sitemap.xml`.
+4. Cuando cambiés el dominio, actualizá `brand.url`: el sitemap, robots y canónicas se regeneran solos.
+
+## Deploy
+
+El sitio está desplegado en Vercel (proyecto `kurimba`). Cada `git push` a `main` con la
+integración de GitHub, o `npx vercel deploy --prod`, publica una nueva versión.
+
 ## Formulario de contacto
 
 El formulario valida en el cliente y envía a `src/app/api/contact/route.ts`, que vuelve a validar y por ahora registra el mensaje en la consola del servidor. Para recibir los mensajes por correo, conectá un proveedor (Resend, SendGrid, Nodemailer) en el punto marcado con `[PENDIENTE]` dentro de ese archivo.
@@ -83,16 +118,21 @@ El formulario valida en el cliente y envía a `src/app/api/contact/route.ts`, qu
 ```
 src/
 ├── app/
-│   ├── layout.tsx          # fuentes, metadata, SEO y Open Graph
-│   ├── page.tsx            # composición de secciones + JSON-LD
+│   ├── layout.tsx          # fuentes, metadata, navbar, footer y botón flotante
+│   ├── page.tsx            # portada: composición de secciones + JSON-LD
 │   ├── globals.css         # tokens de diseño (paleta, tipografías, utilidades)
+│   ├── sitemap.ts / robots.ts
+│   ├── not-found.tsx       # 404 en español
+│   ├── sesiones/           # índice + [slug] por sesión
+│   ├── nosotros/  preguntas-frecuentes/  contacto/  aviso-de-privacidad/
 │   └── api/contact/route.ts
 ├── config/site.ts          # TODO el contenido editable
 ├── lib/
 │   ├── whatsapp.ts         # construcción del enlace de WhatsApp
 │   └── utils.ts
 └── components/
-    ├── ui/                 # Button, Logo, SectionHeading, Reveal, ImagePlaceholder…
+    ├── ui/                 # Button, Logo, SectionHeading, Reveal, ImagePlaceholder,
+    │                       # PageHeader, Breadcrumbs, JsonLd…
     ├── layout/             # Navbar, Footer, WhatsAppFloat
     └── sections/           # Hero, Intro, Sessions, Benefits, HowItWorks, Reiki,
                             # About, Testimonials, FAQ, CTA, Contact

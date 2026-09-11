@@ -14,7 +14,7 @@ export function Logo({ variant = "dark", withTagline = false, className }: Props
   const isLight = variant === "light";
   return (
     <Link
-      href="#inicio"
+      href="/"
       aria-label={`${brand.name}, ir al inicio`}
       className={cn("group inline-flex items-center gap-3", className)}
     >

@@ -1,6 +1,7 @@
 import { Clock, Mail, MapPin, MessageCircle } from "lucide-react";
 import { InstagramIcon } from "@/components/ui/icons";
-import { brand, contact, navLinks, whatsapp } from "@/config/site";
+import Link from "next/link";
+import { brand, contact, navLinks, routes, whatsapp } from "@/config/site";
 import { WHATSAPP_URL } from "@/lib/whatsapp";
 import { Logo } from "@/components/ui/Logo";
 
@@ -104,15 +105,15 @@ export function Footer() {
           <ul className="mt-5 space-y-3 text-sm">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a href={link.href} className="transition-colors hover:text-cream">
+                <Link href={link.href} className="transition-colors hover:text-cream">
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
             <li>
-              <a href="#privacidad" className="transition-colors hover:text-cream">
+              <Link href={routes.privacy} className="transition-colors hover:text-cream">
                 Aviso de privacidad
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -123,10 +124,9 @@ export function Footer() {
           <p>
             © {year} {brand.name}. Todos los derechos reservados.
           </p>
-          <p id="privacidad" className="max-w-xl leading-relaxed">
-            <span className="text-clay/90">Aviso de privacidad:</span> los datos que compartís por
-            el formulario o WhatsApp se usan únicamente para responder tu consulta y coordinar tu
-            cita. No los compartimos con terceros. {/* [PENDIENTE] ampliar si se requiere */}
+          <p className="max-w-xl leading-relaxed">
+            Las sesiones holísticas son prácticas complementarias de bienestar y no sustituyen la
+            atención médica o psicológica profesional.
           </p>
         </div>
       </div>

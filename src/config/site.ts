@@ -22,7 +22,7 @@ export const brand = {
   description:
     "En Kurimba te ofrecemos sesiones y experiencias holísticas creadas para ayudarte a bajar el ritmo, liberar tensiones y reconectar con tu bienestar físico, mental y emocional.",
   /** URL pública del sitio. Se usa para SEO y para compartir en redes. */
-  url: "https://kurimba.cr", // [PENDIENTE] cambiar por el dominio real
+  url: "https://kurimba.vercel.app", // [PENDIENTE] cambiar cuando exista dominio propio
   locale: "es_CR",
 } as const;
 
@@ -65,12 +65,23 @@ export const contact = {
  * Navegación
  * ---------------------------------------------------------- */
 export const navLinks = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Nosotros", href: "#nosotros" },
-  { label: "Sesiones", href: "#sesiones" },
-  { label: "Preguntas frecuentes", href: "#preguntas" },
-  { label: "Contacto", href: "#contacto" },
+  { label: "Inicio", href: "/" },
+  { label: "Nosotros", href: "/nosotros" },
+  { label: "Sesiones", href: "/sesiones" },
+  { label: "Preguntas frecuentes", href: "/preguntas-frecuentes" },
+  { label: "Contacto", href: "/contacto" },
 ] as const;
+
+/** Rutas del sitio (se usan en el sitemap y en enlaces internos). */
+export const routes = {
+  home: "/",
+  about: "/nosotros",
+  sessions: "/sesiones",
+  session: (slug: string) => `/sesiones/${slug}`,
+  faq: "/preguntas-frecuentes",
+  contact: "/contacto",
+  privacy: "/aviso-de-privacidad",
+} as const;
 
 /* ------------------------------------------------------------
  * Sesiones
@@ -92,6 +103,20 @@ export type Session = {
   imageHint: string;
   /** Opcional: ruta a una imagen real en /public. Si no existe, se muestra un placeholder. */
   image?: { src: string; alt: string };
+  /**
+   * Contenido de la página dedicada (/sesiones/[id]).
+   * Solo se genera página para sesiones con status "available".
+   */
+  page?: {
+    /** Título para buscadores (máx. ~60 caracteres). */
+    seoTitle: string;
+    /** Descripción para buscadores (máx. ~155 caracteres). */
+    seoDescription: string;
+    intro: string;
+    sections: { title: string; text: string }[];
+    forWhom: string[];
+    faqs: { question: string; answer: string }[];
+  };
 };
 
 export const sessions: Session[] = [
@@ -107,6 +132,50 @@ export const sessions: Session[] = [
     status: "available",
     imageHint:
       "Foto sugerida: manos abiertas sobre una persona recostada, luz natural cálida, tonos neutros.",
+    page: {
+      seoTitle: "Reiki en Costa Rica · Sesiones de balance energético",
+      seoDescription:
+        "Sesiones de Reiki en Costa Rica para liberar tensiones, encontrar calma y recuperar tu equilibrio. Sin contacto directo, con la ropa puesta. Agendá por WhatsApp.",
+      intro:
+        "El Reiki es una técnica de liberación y balance energético. Trabajamos con la energía vital para desbloquear, armonizar y restaurar la energía de nuestro cuerpo. La sesión se realiza con las manos, sin tocar directamente el cuerpo, en un espacio pensado para bajar el ritmo y volver a conectar con tu bienestar.",
+      sections: [
+        {
+          title: "Cómo es una sesión de Reiki",
+          text: "Empezamos conversando unos minutos sobre cómo te sentís y qué necesitás. Luego te recostás cómodamente, con la ropa puesta, y la persona facilitadora coloca sus manos a una corta distancia de distintas zonas del cuerpo. Muchas personas sienten calor, hormigueo o una relajación profunda; otras simplemente descansan. Al cerrar, compartimos recomendaciones sencillas para seguir cuidando tu bienestar.",
+        },
+        {
+          title: "Qué podés sentir",
+          text: "Cada experiencia es distinta. Es común salir con una sensación de calma, con menos tensión en el cuerpo y con la mente más despejada. El Reiki es una práctica complementaria de bienestar: acompaña, no sustituye la atención médica o psicológica profesional.",
+        },
+        {
+          title: "Cómo prepararte",
+          text: "No necesitás nada especial. Llegá con ropa cómoda, evitá comidas muy pesadas justo antes y, si podés, reservá unos minutos después de la sesión para no salir con prisa.",
+        },
+      ],
+      forWhom: [
+        "Personas que viven con estrés o tensión acumulada",
+        "Quienes buscan un espacio de pausa y descanso profundo",
+        "Personas que nunca probaron una práctica holística y quieren empezar con calma",
+        "Quienes desean complementar su proceso de bienestar con una experiencia de relajación",
+      ],
+      faqs: [
+        {
+          question: "¿El Reiki tiene alguna relación con una religión?",
+          answer:
+            "No. El Reiki es una práctica de bienestar que no requiere ninguna creencia particular. Solo necesitás la disposición de darte un momento de calma.",
+        },
+        {
+          question: "¿Cuántas sesiones necesito?",
+          answer:
+            "Depende de vos. Muchas personas empiezan con una sesión para conocer la experiencia y luego deciden si quieren continuar. Con gusto te orientamos según lo que buscás.",
+        },
+        {
+          question: "¿Puedo combinar el Reiki con otras terapias o tratamientos?",
+          answer:
+            "Sí. El Reiki es una práctica complementaria y no interfiere con tratamientos médicos o psicológicos. Si tenés dudas, consultá con tu profesional de salud.",
+        },
+      ],
+    },
   },
   {
     id: "sesion-holistica",
@@ -120,6 +189,50 @@ export const sessions: Session[] = [
     status: "available",
     imageHint:
       "Foto sugerida: detalle del espacio con plantas, velas o textiles naturales, ambiente sereno.",
+    page: {
+      seoTitle: "Sesión holística personalizada en Costa Rica",
+      seoDescription:
+        "Una experiencia holística adaptada a lo que necesitás hoy: combinamos herramientas de bienestar para acompañar tu equilibrio físico, mental y emocional. Agendá por WhatsApp.",
+      intro:
+        "No todas las personas necesitan lo mismo, ni el mismo día. La sesión holística personalizada parte de una conversación sobre cómo estás y qué buscás, y a partir de ahí combinamos diferentes herramientas de bienestar para acompañarte de la forma más cercana posible.",
+      sections: [
+        {
+          title: "Cómo se construye tu sesión",
+          text: "Al inicio conversamos con calma sobre tu momento actual: cómo dormís, qué te tiene tenso, qué te gustaría sentir al salir. Con esa información, la persona facilitadora propone una combinación de herramientas, por ejemplo balance energético, respiración consciente o un espacio de relajación guiada. Vos siempre podés decir qué te sentís cómodo de vivir y qué preferís dejar fuera.",
+        },
+        {
+          title: "Qué podés sentir",
+          text: "La intención es que salgás con más calma, menos tensión y una mayor claridad sobre lo que necesitás. Como toda práctica holística, es un acompañamiento complementario y no sustituye la atención médica o psicológica profesional.",
+        },
+        {
+          title: "Después de la sesión",
+          text: "Cerramos compartiendo recomendaciones sencillas y realistas para tu día a día, pensadas para que el bienestar no se quede solo en el estudio.",
+        },
+      ],
+      forWhom: [
+        "Personas que quieren una experiencia adaptada a su momento y no un protocolo fijo",
+        "Quienes buscan un espacio para ordenar lo que sienten y bajar el ritmo",
+        "Personas que ya probaron Reiki y quieren explorar otras herramientas de bienestar",
+        "Quienes prefieren un acompañamiento cercano y conversado",
+      ],
+      faqs: [
+        {
+          question: "¿Qué herramientas se pueden incluir en la sesión?",
+          answer:
+            "Depende de lo que necesités ese día. Puede incluir balance energético, respiración consciente, relajación guiada o un espacio de conversación. Siempre lo definimos juntos al inicio.",
+        },
+        {
+          question: "¿Es una sesión de terapia psicológica?",
+          answer:
+            "No. Es una experiencia complementaria de bienestar. Si estás en un proceso terapéutico, podés continuarlo y usar esta sesión como un espacio adicional de calma.",
+        },
+        {
+          question: "¿Puedo pedir que no haya ningún contacto físico?",
+          answer:
+            "Sí. Todo lo que ocurre en la sesión se conversa antes y se respeta lo que vos decidás.",
+        },
+      ],
+    },
   },
   {
     id: "proximamente",

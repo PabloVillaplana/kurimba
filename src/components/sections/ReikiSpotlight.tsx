@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react";
-import { whatsapp } from "@/config/site";
+import { routes, whatsapp } from "@/config/site";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import { Button } from "@/components/ui/Button";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
@@ -52,10 +52,13 @@ export function ReikiSpotlight() {
               </li>
             ))}
           </ul>
-          <div className="mt-9">
+          <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
             <Button href={buildWhatsAppUrl(whatsapp.sessionMessage("Reiki"))} size="lg">
               Quiero vivir la experiencia
               <ArrowRight className="size-4" aria-hidden="true" />
+            </Button>
+            <Button href={routes.session("reiki")} variant="ghost">
+              Leé más sobre el Reiki
             </Button>
           </div>
         </Reveal>

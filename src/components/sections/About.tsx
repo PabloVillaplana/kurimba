@@ -1,22 +1,32 @@
 import { Award } from "lucide-react";
 import { facilitator } from "@/config/site";
+import { cn } from "@/lib/utils";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 
-export function About() {
+type Props = { hideHeading?: boolean };
+
+export function About({ hideHeading = false }: Props) {
   return (
     <section id="nosotros" className="bg-cream py-24 sm:py-32">
       <div className="container-k">
-        <Reveal>
-          <SectionHeading
-            eyebrow="Nosotros"
-            title="Sobre Kurimba"
-            text="Un proyecto que nace del deseo de crear un lugar donde cualquier persona pueda detenerse, respirar y volver a sentirse en casa consigo misma."
-          />
-        </Reveal>
+        {hideHeading ? null : (
+          <Reveal>
+            <SectionHeading
+              eyebrow="Nosotros"
+              title="Sobre Kurimba"
+              text="Un proyecto que nace del deseo de crear un lugar donde cualquier persona pueda detenerse, respirar y volver a sentirse en casa consigo misma."
+            />
+          </Reveal>
+        )}
 
-        <div className="mt-16 grid items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
+        <div
+          className={cn(
+            "grid items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20",
+            !hideHeading && "mt-16",
+          )}
+        >
           <Reveal className="mx-auto w-full max-w-sm lg:sticky lg:top-28">
             <div className="relative aspect-[4/5]">
               <ImagePlaceholder
