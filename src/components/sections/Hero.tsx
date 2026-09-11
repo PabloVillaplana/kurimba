@@ -3,7 +3,6 @@ import { WHATSAPP_URL } from "@/lib/whatsapp";
 import { Button } from "@/components/ui/Button";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { KurimbaSymbol } from "@/components/ui/KurimbaSymbol";
-import { Reveal } from "@/components/ui/Reveal";
 
 export function Hero() {
   return (
@@ -23,25 +22,25 @@ export function Hero() {
 
       <div className="container-k relative grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
         <div className="max-w-2xl">
-          <Reveal>
+          <div className="animate-fade-up">
             <p className="eyebrow mb-6 flex items-center gap-3">
               <KurimbaSymbol className="h-4" />
               Bienestar holístico · Costa Rica
             </p>
-          </Reveal>
-          <Reveal delay={100}>
+          </div>
+          <div className="animate-fade-up" style={{ animationDelay: "100ms" }}>
             <h1 className="font-display text-5xl leading-[1.05] font-medium text-balance text-bark sm:text-6xl lg:text-7xl">
               Un espacio para sanar, equilibrarte y{" "}
               <span className="text-terracotta italic">conectar con vos</span>
             </h1>
-          </Reveal>
-          <Reveal delay={200}>
+          </div>
+          <div className="animate-fade-up" style={{ animationDelay: "200ms" }}>
             <p className="mt-7 max-w-xl text-lg leading-relaxed text-pretty text-stone sm:text-xl">
               Sesiones y experiencias holísticas para acompañarte a liberar tensiones, recuperar tu
               equilibrio y reconectar con tu bienestar.
             </p>
-          </Reveal>
-          <Reveal delay={300}>
+          </div>
+          <div className="animate-fade-up" style={{ animationDelay: "300ms" }}>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <Button href="#sesiones" size="lg">
                 Conocé nuestras sesiones
@@ -52,10 +51,13 @@ export function Hero() {
                 Agendá por WhatsApp
               </Button>
             </div>
-          </Reveal>
+          </div>
         </div>
 
-        <Reveal delay={200} className="relative mx-auto w-full max-w-md lg:max-w-none">
+        <div
+          className="animate-fade-up relative mx-auto w-full max-w-md lg:max-w-none"
+          style={{ animationDelay: "250ms" }}
+        >
           <div className="relative aspect-[4/5] w-full">
             <ImagePlaceholder
               shape="blob"
@@ -74,7 +76,7 @@ export function Hero() {
               className="absolute -top-6 -left-6 size-20 rounded-full bg-terracotta/15 blur-xl"
             />
           </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );

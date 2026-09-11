@@ -27,6 +27,19 @@ export const brand = {
 } as const;
 
 /* ------------------------------------------------------------
+ * SEO
+ * ---------------------------------------------------------- */
+export const seo = {
+  /** Título de la portada (máx. ~60 caracteres). */
+  homeTitle: "Kurimba · Reiki y sesiones holísticas en Costa Rica",
+  /** Descripción de la portada (máx. ~155 caracteres). */
+  homeDescription:
+    "Sesiones de Reiki y experiencias holísticas en Costa Rica, en nuestro espacio o a domicilio, para bajar el ritmo, liberar tensiones y reconectar con vos.",
+  /** Código de verificación de Google Search Console (meta tag). Dejar vacío si se verifica por DNS. */
+  googleSiteVerification: "", // [PENDIENTE] ej. "AbC123..."
+} as const;
+
+/* ------------------------------------------------------------
  * WhatsApp
  * ---------------------------------------------------------- */
 export const whatsapp = {
@@ -58,6 +71,15 @@ export const contact = {
     { days: "Lunes a viernes", time: "9:00 a. m. – 6:00 p. m." }, // [PENDIENTE]
     { days: "Sábados", time: "9:00 a. m. – 1:00 p. m." }, // [PENDIENTE]
     { days: "Domingos", time: "Cerrado" },
+  ],
+  /** Mismos horarios en formato para datos estructurados (schema.org). Mantener sincronizado. */
+  openingHours: [
+    {
+      days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "18:00",
+    }, // [PENDIENTE]
+    { days: ["Saturday"], opens: "09:00", closes: "13:00" }, // [PENDIENTE]
   ],
 } as const;
 
@@ -148,7 +170,7 @@ export const sessions: Session[] = [
     imageHint:
       "Foto sugerida: manos abiertas sobre una persona recostada, luz natural cálida, tonos neutros.",
     page: {
-      seoTitle: "Reiki en Costa Rica · Sesiones de balance energético",
+      seoTitle: "Reiki en Costa Rica: sesiones de balance energético",
       seoDescription:
         "Sesiones de Reiki en Costa Rica, en nuestro espacio o a domicilio, para liberar tensiones, encontrar calma y recuperar tu equilibrio. Agendá por WhatsApp.",
       intro:
@@ -213,7 +235,7 @@ export const sessions: Session[] = [
     page: {
       seoTitle: "Sesión holística personalizada en Costa Rica",
       seoDescription:
-        "Una experiencia holística adaptada a lo que necesitás hoy, en nuestro espacio o a domicilio en Costa Rica. Acompañamos tu equilibrio físico, mental y emocional.",
+        "Experiencia holística adaptada a lo que necesitás hoy, en nuestro espacio o a domicilio en Costa Rica, para tu equilibrio físico, mental y emocional.",
       intro:
         "No todas las personas necesitan lo mismo, ni el mismo día. La sesión holística personalizada parte de una conversación sobre cómo estás y qué buscás, y a partir de ahí combinamos diferentes herramientas de bienestar para acompañarte de la forma más cercana posible.",
       sections: [

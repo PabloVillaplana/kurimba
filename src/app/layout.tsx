@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Jost } from "next/font/google";
-import { brand } from "@/config/site";
+import { brand, contact, seo, whatsapp } from "@/config/site";
+import { JsonLd } from "@/components/ui/JsonLd";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFloat } from "@/components/layout/WhatsAppFloat";
@@ -21,51 +22,42 @@ const jost = Jost({
   display: "swap",
 });
 
-const title = `${brand.name} · ${brand.slogan}`;
-
 export const metadata: Metadata = {
   metadataBase: new URL(brand.url),
   title: {
-    default: title,
+    default: seo.homeTitle,
     template: `%s · ${brand.name}`,
   },
-  description: brand.description,
+  description: seo.homeDescription,
+  applicationName: brand.name,
   keywords: [
     "Kurimba",
     "Reiki Costa Rica",
-    "sesiones holísticas",
+    "Reiki a domicilio",
+    "sesiones holísticas Costa Rica",
+    "terapias holísticas",
     "bienestar",
     "equilibrio",
     "relajación",
-    "terapias holísticas Costa Rica",
   ],
   openGraph: {
     type: "website",
     locale: brand.locale,
-    url: brand.url,
     siteName: brand.name,
-    title,
-    description: brand.description,
-    images: [
-      {
-        url: "/brand/kurimba-logo-fondo-oscuro.png",
-        width: 1040,
-        height: 1040,
-        alt: `${brand.name} · ${brand.tagline}`,
-      },
-    ],
   },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description: brand.description,
-    images: ["/brand/kurimba-logo-fondo-oscuro.png"],
-  },
+  twitter: { card: "summary_large_image" },
   icons: {
     icon: "/brand/kurimba-simbolo.svg",
     apple: "/brand/kurimba-simbolo.png",
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
+  },
+  ...(seo.googleSiteVerification
+    ? { verification: { google: seo.googleSiteVerification } }
+    : {}),
 };
 
 export const viewport: Viewport = {
@@ -90,6 +82,32 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </main>
         <Footer />
         <WhatsAppFloat />
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Organization",
+                "@id": `${brand.url}/#organization`,
+                name: brand.name,
+                url: brand.url,
+                logo: `${brand.url}/brand/kurimba-logo-transparente.png`,
+                email: contact.email,
+                telephone: `+${whatsapp.number}`,
+                sameAs: [contact.instagram.url],
+              },
+              {
+                "@type": "WebSite",
+                "@id": `${brand.url}/#website`,
+                url: brand.url,
+                name: brand.name,
+                description: seo.homeDescription,
+                inLanguage: "es-CR",
+                publisher: { "@id": `${brand.url}/#organization` },
+              },
+            ],
+          }}
+        />
       </body>
     </html>
   );

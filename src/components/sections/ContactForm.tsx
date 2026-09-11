@@ -103,6 +103,7 @@ export function ContactForm() {
       noValidate
       className="rounded-[2rem] border border-clay/60 bg-linen/60 p-6 shadow-soft sm:p-9"
     >
+      <h2 className="mb-6 font-display text-3xl font-medium text-bark">Dejanos un mensaje</h2>
       <div className="grid gap-5 sm:grid-cols-2">
         <Field
           id="nombre"

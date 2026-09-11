@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import { brand, contact, routes } from "@/config/site";
 import { PageHeader } from "@/components/ui/PageHeader";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Aviso de privacidad",
-  description: `Cómo ${brand.name} utiliza y protege los datos que compartís al escribirnos o agendar una sesión.`,
-  alternates: { canonical: routes.privacy },
-  robots: { index: true, follow: true },
-};
+  description: `Cómo ${brand.name} utiliza y protege los datos que compartís al escribirnos o agendar una sesión de bienestar.`,
+  path: routes.privacy,
+});
 
 /**
  * Texto base editable. [PENDIENTE] Revisar con asesoría legal si se requiere

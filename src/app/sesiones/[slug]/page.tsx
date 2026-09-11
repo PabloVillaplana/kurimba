@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ArrowRight, Check, Clock, Home, MessageCircle, Tag } from "lucide-react";
 import { brand, homeService, routes, sessions, whatsapp } from "@/config/site";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
+import { buildMetadata } from "@/lib/seo";
 import { Button } from "@/components/ui/Button";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { JsonLd } from "@/components/ui/JsonLd";
@@ -30,16 +31,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const session = getSession(slug);
   if (!session?.page) return {};
-  return {
+  return buildMetadata({
     title: session.page.seoTitle,
     description: session.page.seoDescription,
-    alternates: { canonical: routes.session(session.id) },
-    openGraph: {
-      title: `${session.page.seoTitle} · ${brand.name}`,
-      description: session.page.seoDescription,
-      url: routes.session(session.id),
-    },
-  };
+    path: routes.session(session.id),
+  });
 }
 
 export default async function SessionPage({ params }: PageProps<"/sesiones/[slug]">) {

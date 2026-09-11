@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import { faqs, routes } from "@/config/site";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { FAQ } from "@/components/sections/FAQ";
 import { CTA } from "@/components/sections/CTA";
 
-export const metadata: Metadata = {
-  title: "Preguntas frecuentes sobre Reiki y sesiones holísticas",
+export const metadata: Metadata = buildMetadata({
+  title: "Preguntas frecuentes · Reiki y sesiones holísticas",
   description:
-    "Respondemos las dudas más comunes antes de tu primera sesión en Kurimba: cómo prepararte, cuánto dura, si se toca el cuerpo, qué ropa usar y cómo agendar por WhatsApp.",
-  alternates: { canonical: routes.faq },
-};
+    "Dudas comunes antes de tu primera sesión en Kurimba: cómo prepararte, cuánto dura, si se toca el cuerpo, sesiones a domicilio y cómo agendar por WhatsApp.",
+  path: routes.faq,
+});
 
 export default function FAQPage() {
   return (

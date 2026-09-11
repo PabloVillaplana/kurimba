@@ -17,11 +17,17 @@ type Props = {
  */
 export function Reveal({ children, className, delay = 0, as: Tag = "div" }: Props) {
   const ref = useRef<HTMLElement | null>(null);
-  const [visible, setVisible] = useState(false);
+  // Se renderiza visible en el servidor (SEO y sin JS). Solo se oculta y anima
+  // en el cliente cuando el elemento está fuera de la pantalla al montar.
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.92) return; // ya visible: no animar
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -33,6 +39,7 @@ export function Reveal({ children, className, delay = 0, as: Tag = "div" }: Prop
       { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
     );
 
+    setVisible(false);
     observer.observe(el);
     return () => observer.disconnect();
   }, []);

@@ -10,7 +10,16 @@ import { FAQ } from "@/components/sections/FAQ";
 import { CTA } from "@/components/sections/CTA";
 import { Contact } from "@/components/sections/Contact";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { brand, contact } from "@/config/site";
+import type { Metadata } from "next";
+import { brand, contact, homeService, seo, sessions, whatsapp } from "@/config/site";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  title: seo.homeTitle,
+  description: seo.homeDescription,
+  path: "/",
+  absoluteTitle: true,
+});
 
 export default function HomePage() {
   return (
@@ -30,17 +39,44 @@ export default function HomePage() {
         data={{
           "@context": "https://schema.org",
           "@type": "HealthAndBeautyBusiness",
+          "@id": `${brand.url}/#business`,
           name: brand.name,
-          description: brand.description,
+          description: seo.homeDescription,
           url: brand.url,
           email: contact.email,
-          image: `${brand.url}/brand/kurimba-logo-fondo-oscuro.png`,
+          telephone: `+${whatsapp.number}`,
+          image: `${brand.url}/opengraph-image`,
+          logo: `${brand.url}/brand/kurimba-logo-transparente.png`,
           address: {
             "@type": "PostalAddress",
             addressLocality: contact.location.short,
             addressCountry: "CR",
           },
+          areaServed: homeService.enabled
+            ? [{ "@type": "Country", name: "Costa Rica" }, { "@type": "Place", name: homeService.coverage }]
+            : { "@type": "Country", name: "Costa Rica" },
+          openingHoursSpecification: contact.openingHours.map((h) => ({
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: h.days,
+            opens: h.opens,
+            closes: h.closes,
+          })),
           sameAs: [contact.instagram.url],
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: "Sesiones y experiencias holísticas",
+            itemListElement: sessions
+              .filter((s) => s.status === "available")
+              .map((s) => ({
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "Service",
+                  name: s.name,
+                  description: s.description,
+                  url: `${brand.url}/sesiones/${s.id}`,
+                },
+              })),
+          },
         }}
       />
     </>

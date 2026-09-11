@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
 import { routes } from "@/config/site";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Sessions } from "@/components/sections/Sessions";
@@ -6,12 +7,12 @@ import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Benefits } from "@/components/sections/Benefits";
 import { CTA } from "@/components/sections/CTA";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Sesiones holísticas y Reiki en Costa Rica",
   description:
-    "Conocé las sesiones de Kurimba: Reiki y sesión holística personalizada, en nuestro espacio o a domicilio en Costa Rica, para bajar el ritmo y reconectar con tu bienestar.",
-  alternates: { canonical: routes.sessions },
-};
+    "Reiki y sesión holística personalizada, en nuestro espacio o a domicilio en Costa Rica. Experiencias para bajar el ritmo y reconectar con tu bienestar.",
+  path: routes.sessions,
+});
 
 export default function SessionsPage() {
   return (

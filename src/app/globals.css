@@ -39,6 +39,7 @@
   --animate-float: float 9s ease-in-out infinite;
   --animate-float-slow: float 14s ease-in-out infinite;
   --animate-pulse-soft: pulse-soft 3s ease-in-out infinite;
+  --animate-fade-up: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 
   @keyframes float {
     0%,
@@ -47,6 +48,16 @@
     }
     50% {
       transform: translate3d(0, -14px, 0) rotate(2deg);
+    }
+  }
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
   @keyframes pulse-soft {
