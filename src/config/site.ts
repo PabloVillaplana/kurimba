@@ -31,7 +31,7 @@ export const brand = {
  * ---------------------------------------------------------- */
 export const whatsapp = {
   /** Número en formato internacional, solo dígitos (sin "+", espacios ni guiones). */
-  number: "50600000000", // [PENDIENTE] número real, ej. "50688889999"
+  number: "50670855850", // +506 7085-5850
   /** Mensaje precargado que verá la persona al abrir WhatsApp. */
   defaultMessage:
     "Hola, vi la página de Kurimba y me gustaría recibir información para agendar una sesión.",
