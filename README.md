@@ -38,6 +38,7 @@ Toda la información editable vive en **`src/config/site.ts`**:
 | Número y mensaje de WhatsApp | `whatsapp`                  |
 | Correo, Instagram, ubicación | `contact`                   |
 | Horarios                     | `contact.hours`             |
+| Servicio a domicilio         | `homeService`               |
 | Sesiones, duración, precios  | `sessions`                  |
 | Beneficios                   | `benefits`                  |
 | Pasos de una sesión          | `steps`                     |

@@ -62,6 +62,18 @@ export const contact = {
 } as const;
 
 /* ------------------------------------------------------------
+ * Servicio a domicilio
+ * ---------------------------------------------------------- */
+export const homeService = {
+  enabled: true,
+  label: "Disponible a domicilio",
+  title: "También llegamos a donde estés",
+  text: "Si preferís vivir la experiencia en la comodidad de tu casa u oficina, ofrecemos sesiones a domicilio. Llevamos todo lo necesario para crear un ambiente tranquilo en tu propio espacio.",
+  coverage: "Gran Área Metropolitana, Costa Rica", // [PENDIENTE] zonas de cobertura
+  note: "Consultá disponibilidad y costo de traslado por WhatsApp.", // [PENDIENTE] ajustar
+} as const;
+
+/* ------------------------------------------------------------
  * Navegación
  * ---------------------------------------------------------- */
 export const navLinks = [
@@ -99,6 +111,8 @@ export type Session = {
   benefits: string[];
   icon: SessionIcon;
   status: "available" | "coming-soon";
+  /** Si la sesión puede realizarse a domicilio. */
+  homeService?: boolean;
   /** Indicación de la foto que debe ir en la tarjeta. */
   imageHint: string;
   /** Opcional: ruta a una imagen real en /public. Si no existe, se muestra un placeholder. */
@@ -130,12 +144,13 @@ export const sessions: Session[] = [
     benefits: ["Relajación profunda", "Liberación de tensiones", "Sensación de calma"],
     icon: "hands",
     status: "available",
+    homeService: true,
     imageHint:
       "Foto sugerida: manos abiertas sobre una persona recostada, luz natural cálida, tonos neutros.",
     page: {
       seoTitle: "Reiki en Costa Rica · Sesiones de balance energético",
       seoDescription:
-        "Sesiones de Reiki en Costa Rica para liberar tensiones, encontrar calma y recuperar tu equilibrio. Sin contacto directo, con la ropa puesta. Agendá por WhatsApp.",
+        "Sesiones de Reiki en Costa Rica, en nuestro espacio o a domicilio, para liberar tensiones, encontrar calma y recuperar tu equilibrio. Agendá por WhatsApp.",
       intro:
         "El Reiki es una técnica de liberación y balance energético. Trabajamos con la energía vital para desbloquear, armonizar y restaurar la energía de nuestro cuerpo. La sesión se realiza con las manos, sin tocar directamente el cuerpo, en un espacio pensado para bajar el ritmo y volver a conectar con tu bienestar.",
       sections: [
@@ -170,6 +185,11 @@ export const sessions: Session[] = [
             "Depende de vos. Muchas personas empiezan con una sesión para conocer la experiencia y luego deciden si quieren continuar. Con gusto te orientamos según lo que buscás.",
         },
         {
+          question: "¿Puedo recibir la sesión de Reiki en mi casa?",
+          answer:
+            "Sí. Ofrecemos sesiones a domicilio. Solo necesitamos un espacio tranquilo donde podás recostarte; nosotros llevamos lo demás. Consultá la disponibilidad y el costo de traslado por WhatsApp.",
+        },
+        {
           question: "¿Puedo combinar el Reiki con otras terapias o tratamientos?",
           answer:
             "Sí. El Reiki es una práctica complementaria y no interfiere con tratamientos médicos o psicológicos. Si tenés dudas, consultá con tu profesional de salud.",
@@ -187,12 +207,13 @@ export const sessions: Session[] = [
     benefits: ["Adaptada a vos", "Herramientas combinadas", "Acompañamiento cercano"],
     icon: "sparkles",
     status: "available",
+    homeService: true,
     imageHint:
       "Foto sugerida: detalle del espacio con plantas, velas o textiles naturales, ambiente sereno.",
     page: {
       seoTitle: "Sesión holística personalizada en Costa Rica",
       seoDescription:
-        "Una experiencia holística adaptada a lo que necesitás hoy: combinamos herramientas de bienestar para acompañar tu equilibrio físico, mental y emocional. Agendá por WhatsApp.",
+        "Una experiencia holística adaptada a lo que necesitás hoy, en nuestro espacio o a domicilio en Costa Rica. Acompañamos tu equilibrio físico, mental y emocional.",
       intro:
         "No todas las personas necesitan lo mismo, ni el mismo día. La sesión holística personalizada parte de una conversación sobre cómo estás y qué buscás, y a partir de ahí combinamos diferentes herramientas de bienestar para acompañarte de la forma más cercana posible.",
       sections: [
@@ -318,6 +339,7 @@ export const about = {
     "Kurimba nace de una idea sencilla: en medio del ritmo de todos los días, necesitamos lugares donde bajar la velocidad. Un espacio tranquilo, cálido y sin prisa, donde el bienestar no sea un lujo sino un momento que te regalás.",
     "Ofrecemos sesiones y experiencias holísticas, como el Reiki y la sesión holística personalizada, pensadas para acompañarte a liberar tensiones, recuperar tu equilibrio y reconectar con vos. No hay protocolos complicados ni promesas exageradas: solo un acompañamiento cercano, respetuoso y a tu ritmo.",
     "Creemos en una espiritualidad sencilla y moderna, abierta a todas las personas, sin importar si es tu primera sesión o si ya conocés estas prácticas. Llegás como estás, y desde ahí empezamos.",
+    "Y si preferís no moverte de tu espacio, también ofrecemos sesiones a domicilio: llevamos la experiencia a tu casa u oficina, con la misma calma y el mismo cuidado.",
   ],
   /** Valores que se muestran como pequeñas tarjetas. */
   values: [
@@ -399,8 +421,12 @@ export const faqs: { question: string; answer: string }[] = [
       "Sí. Es la forma más sencilla. Escribinos por WhatsApp, te contamos la disponibilidad y coordinamos el día y la hora que mejor te funcione.",
   },
   {
+    question: "¿Hacen sesiones a domicilio?",
+    answer: `Sí. Podemos llegar a tu casa u oficina dentro de ${homeService.coverage}. Llevamos todo lo necesario para crear un ambiente tranquilo. ${homeService.note}`,
+  },
+  {
     question: "¿Dónde está ubicado Kurimba?",
-    answer: `Estamos en ${contact.location.short}. Al agendar tu cita te compartimos la ubicación exacta y las indicaciones para llegar.`,
+    answer: `Estamos en ${contact.location.short}. Al agendar tu cita te compartimos la ubicación exacta y las indicaciones para llegar. Si preferís, también podemos ir a domicilio.`,
   },
   {
     question: "¿Estas sesiones sustituyen un tratamiento médico?",

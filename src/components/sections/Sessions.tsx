@@ -1,5 +1,6 @@
-import { ArrowRight } from "lucide-react";
-import { routes, sessions } from "@/config/site";
+import { ArrowRight, Home, MessageCircle } from "lucide-react";
+import { homeService, routes, sessions } from "@/config/site";
+import { WHATSAPP_URL } from "@/lib/whatsapp";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -33,6 +34,31 @@ export function Sessions({ hideHeading = false, showAllLink = true }: Props) {
             </Reveal>
           ))}
         </ul>
+
+        {homeService.enabled ? (
+          <Reveal delay={200}>
+            <div className="mt-14 flex flex-col gap-6 rounded-[2rem] border border-clay/60 bg-cream p-7 sm:p-9 lg:flex-row lg:items-center lg:justify-between">
+              <div className="flex items-start gap-5">
+                <span className="flex size-14 shrink-0 items-center justify-center rounded-blob bg-sage-light text-forest">
+                  <Home className="size-6" aria-hidden="true" />
+                </span>
+                <div>
+                  <p className="eyebrow mb-2">A domicilio</p>
+                  <h3 className="font-display text-3xl leading-tight font-medium text-bark">
+                    {homeService.title}
+                  </h3>
+                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-stone">
+                    {homeService.text} Cobertura: {homeService.coverage}. {homeService.note}
+                  </p>
+                </div>
+              </div>
+              <Button href={WHATSAPP_URL} variant="whatsapp" className="shrink-0">
+                <MessageCircle className="size-4" aria-hidden="true" />
+                Consultar a domicilio
+              </Button>
+            </div>
+          </Reveal>
+        ) : null}
 
         {showAllLink ? (
           <div className="mt-12 text-center">

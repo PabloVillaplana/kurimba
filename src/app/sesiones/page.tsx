@@ -9,7 +9,7 @@ import { CTA } from "@/components/sections/CTA";
 export const metadata: Metadata = {
   title: "Sesiones holísticas y Reiki en Costa Rica",
   description:
-    "Conocé las sesiones de Kurimba: Reiki, sesión holística personalizada y nuevas experiencias para bajar el ritmo, liberar tensiones y reconectar con tu bienestar.",
+    "Conocé las sesiones de Kurimba: Reiki y sesión holística personalizada, en nuestro espacio o a domicilio en Costa Rica, para bajar el ritmo y reconectar con tu bienestar.",
   alternates: { canonical: routes.sessions },
 };
 

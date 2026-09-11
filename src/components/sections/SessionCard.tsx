@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { ArrowRight, Check, Clock, MessageCircle, Tag } from "lucide-react";
+import { ArrowRight, Check, Clock, Home, MessageCircle, Tag } from "lucide-react";
 import type { Session } from "@/config/site";
-import { routes, whatsapp } from "@/config/site";
+import { homeService, routes, whatsapp } from "@/config/site";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
@@ -71,6 +71,13 @@ export function SessionCard({ session }: Props) {
             <dt className="sr-only">Precio</dt>
             <dd>{session.price ?? "Consultá el precio"}</dd>
           </div>
+          {homeService.enabled && session.homeService ? (
+            <div className="flex items-center gap-2 text-forest">
+              <Home className="size-4" aria-hidden="true" />
+              <dt className="sr-only">Modalidad</dt>
+              <dd>{homeService.label}</dd>
+            </div>
+          ) : null}
         </dl>
 
         <ul className="mt-5 space-y-2 border-t border-clay/60 pt-5">

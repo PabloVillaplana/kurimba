@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ArrowRight, Check, Clock, MessageCircle, Tag } from "lucide-react";
-import { brand, routes, sessions, whatsapp } from "@/config/site";
+import { ArrowRight, Check, Clock, Home, MessageCircle, Tag } from "lucide-react";
+import { brand, homeService, routes, sessions, whatsapp } from "@/config/site";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import { Button } from "@/components/ui/Button";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
@@ -71,6 +71,13 @@ export default async function SessionPage({ params }: PageProps<"/sesiones/[slug
             <dt className="sr-only">Precio</dt>
             <dd>{session.price ?? "Consultá el precio"}</dd>
           </div>
+          {homeService.enabled && session.homeService ? (
+            <div className="flex items-center gap-2 text-forest">
+              <Home className="size-4" aria-hidden="true" />
+              <dt className="sr-only">Modalidad</dt>
+              <dd>En el estudio o a domicilio</dd>
+            </div>
+          ) : null}
         </dl>
         <div className="mt-8 flex flex-col gap-4 sm:flex-row">
           <Button href={whatsappUrl} size="lg">
@@ -198,6 +205,15 @@ export default async function SessionPage({ params }: PageProps<"/sesiones/[slug
           url: `${brand.url}${routes.session(session.id)}`,
           serviceType: session.name,
           areaServed: { "@type": "Country", name: "Costa Rica" },
+          ...(homeService.enabled && session.homeService
+            ? {
+                availableChannel: {
+                  "@type": "ServiceChannel",
+                  name: "Sesión a domicilio",
+                  serviceLocation: { "@type": "Place", name: homeService.coverage },
+                },
+              }
+            : {}),
           provider: { "@type": "HealthAndBeautyBusiness", name: brand.name, url: brand.url },
         }}
       />
