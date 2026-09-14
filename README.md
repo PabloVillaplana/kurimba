@@ -87,6 +87,7 @@ Mientras no haya fotos definitivas, cada espacio muestra un placeholder con la i
 | `/preguntas-frecuentes`       | FAQ con datos estructurados FAQPage                  |
 | `/contacto`                   | Contacto y formulario                                |
 | `/aviso-de-privacidad`        | Aviso de privacidad (texto editable)                 |
+| `/agendar`                    | Redirige a WhatsApp con mensaje precargado (`?sesion=reiki` para una sesión) |
 | `/sitemap.xml`                | Sitemap generado automáticamente                     |
 | `/robots.txt`                 | Robots con referencia al sitemap                     |
 

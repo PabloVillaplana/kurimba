@@ -50,7 +50,9 @@ export const whatsapp = {
     "Hola, vi la página de Kurimba y me gustaría recibir información para agendar una sesión.",
   /** Mensaje cuando la persona hace clic desde una sesión específica. */
   sessionMessage: (sessionName: string) =>
-    `Hola, vi la página de Kurimba y me gustaría agendar una sesión de ${sessionName}.`,
+    /^sesi[oó]n\b/i.test(sessionName)
+      ? `Hola, vi la página de Kurimba y me gustaría agendar una ${sessionName.charAt(0).toLowerCase()}${sessionName.slice(1)}.`
+      : `Hola, vi la página de Kurimba y me gustaría agendar una sesión de ${sessionName}.`,
 } as const;
 
 /* ------------------------------------------------------------
@@ -115,6 +117,8 @@ export const routes = {
   faq: "/preguntas-frecuentes",
   contact: "/contacto",
   privacy: "/aviso-de-privacidad",
+  /** Redirige a WhatsApp con el mensaje precargado (ver src/app/agendar/route.ts). */
+  book: "/agendar",
 } as const;
 
 /* ------------------------------------------------------------
