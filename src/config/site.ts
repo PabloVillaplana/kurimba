@@ -59,7 +59,7 @@ export const whatsapp = {
  * Contacto y redes
  * ---------------------------------------------------------- */
 export const contact = {
-  email: "hola@kurimba.cr", // [PENDIENTE]
+  email: "kurimbacr@gmail.com", // [PENDIENTE]
   instagram: {
     handle: "@kurimba.cr", // [PENDIENTE]
     url: "https://instagram.com/kurimba.cr", // [PENDIENTE]
