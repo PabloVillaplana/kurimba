@@ -1,7 +1,7 @@
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/whatsapp";
 import { Button } from "@/components/ui/Button";
-import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
+import { Artwork } from "@/components/ui/Artwork";
 import { KurimbaSymbol } from "@/components/ui/KurimbaSymbol";
 
 export function Hero() {
@@ -59,13 +59,7 @@ export function Hero() {
           style={{ animationDelay: "250ms" }}
         >
           <div className="relative aspect-[4/5] w-full">
-            <ImagePlaceholder
-              shape="blob"
-              tone="sage"
-              priority
-              fill
-              hint="Foto principal sugerida: espacio de bienestar cálido y luminoso, con luz natural, plantas, textiles en tonos tierra y una camilla o cojines. Sin personas o con una persona en actitud serena."
-            />
+            <Artwork variant="waves" tone="sage" shape="blob" fill />
             {/* Detalle dorado */}
             <div
               aria-hidden="true"

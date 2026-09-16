@@ -1,6 +1,6 @@
 import { about } from "@/config/site";
 import { cn } from "@/lib/utils";
-import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
+import { Artwork } from "@/components/ui/Artwork";
 import { KurimbaSymbol } from "@/components/ui/KurimbaSymbol";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
@@ -25,7 +25,7 @@ export function About({ hideHeading = false }: Props) {
         >
           <Reveal className="mx-auto w-full max-w-md lg:max-w-none">
             <div className="relative aspect-[4/5] w-full">
-              <ImagePlaceholder fill shape="blob-2" tone="sage" hint={about.imageHint} />
+              <Artwork variant="petals" tone="sage" shape="blob-2" fill />
               <div
                 aria-hidden="true"
                 className="absolute -bottom-5 -left-5 flex size-20 items-center justify-center rounded-full bg-cream shadow-soft"

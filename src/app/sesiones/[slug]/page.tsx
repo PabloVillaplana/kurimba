@@ -5,7 +5,7 @@ import { brand, homeService, routes, sessions, whatsapp } from "@/config/site";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import { buildMetadata } from "@/lib/seo";
 import { Button } from "@/components/ui/Button";
-import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
+import { Artwork } from "@/components/ui/Artwork";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
@@ -106,7 +106,7 @@ export default async function SessionPage({ params }: PageProps<"/sesiones/[slug
           <div className="space-y-8 lg:sticky lg:top-28">
             <Reveal>
               <div className="relative aspect-[4/5] w-full max-w-md">
-                <ImagePlaceholder fill shape="blob" tone="sage" hint={session.imageHint} />
+                <Artwork variant={session.art} image={session.image} tone="sage" shape="blob" fill />
                 <span className="absolute top-4 left-4 flex size-12 items-center justify-center rounded-full bg-cream text-terracotta shadow-soft">
                   <Icon className="size-5" aria-hidden="true" />
                 </span>

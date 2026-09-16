@@ -5,7 +5,7 @@ import { homeService, routes, whatsapp } from "@/config/site";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
-import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
+import { Artwork } from "@/components/ui/Artwork";
 import { iconMap } from "@/components/ui/icons";
 
 type Props = { session: Session };
@@ -26,14 +26,14 @@ export function SessionCard({ session }: Props) {
       )}
     >
       <div className="relative aspect-[4/3]">
-        <ImagePlaceholder
-          hint={session.imageHint}
+        <Artwork
+          variant={session.art}
           image={session.image}
           tone={comingSoon ? "linen" : "sand"}
-          showSymbol={false}
+          shape="none"
           fill
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          className="rounded-none shadow-none"
+          className="shadow-none transition-transform duration-700 group-hover:scale-[1.03]"
         />
         <span className="absolute top-4 left-4 flex size-11 items-center justify-center rounded-full bg-cream/90 text-terracotta shadow-soft backdrop-blur-sm">
           <Icon className="size-5" aria-hidden="true" />

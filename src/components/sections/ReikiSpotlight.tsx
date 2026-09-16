@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { routes, whatsapp } from "@/config/site";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 import { Button } from "@/components/ui/Button";
-import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
+import { Artwork } from "@/components/ui/Artwork";
 import { KurimbaSymbol } from "@/components/ui/KurimbaSymbol";
 import { Reveal } from "@/components/ui/Reveal";
 
@@ -16,12 +16,7 @@ export function ReikiSpotlight() {
       <div className="container-k relative grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
         <Reveal className="order-2 lg:order-1">
           <div className="relative mx-auto aspect-[5/4] w-full max-w-lg">
-            <ImagePlaceholder
-              shape="blob-2"
-              tone="sand"
-              fill
-              hint="Foto sugerida: manos en actitud de calma cerca de una persona recostada, sin contacto directo, luz suave. Evitar símbolos religiosos o esotéricos."
-            />
+            <Artwork variant="rings" tone="sand" shape="blob-2" fill />
             <div
               aria-hidden="true"
               className="absolute -top-5 -right-5 flex size-24 items-center justify-center rounded-full bg-cream shadow-soft"

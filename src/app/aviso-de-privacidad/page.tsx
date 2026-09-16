@@ -17,7 +17,7 @@ export const metadata: Metadata = buildMetadata({
 const sections = [
   {
     title: "Qué datos recopilamos",
-    text: "Cuando nos escribís por WhatsApp, Instagram, correo o el formulario del sitio, podemos recibir tu nombre, número de teléfono, correo electrónico y el contenido de tu mensaje.",
+    text: "Cuando nos escribís por WhatsApp, Instagram o correo, podemos recibir tu nombre, número de teléfono, correo electrónico y el contenido de tu mensaje.",
   },
   {
     title: "Para qué los usamos",

@@ -139,9 +139,9 @@ export type Session = {
   status: "available" | "coming-soon";
   /** Si la sesión puede realizarse a domicilio. */
   homeService?: boolean;
-  /** Indicación de la foto que debe ir en la tarjeta. */
-  imageHint: string;
-  /** Opcional: ruta a una imagen real en /public. Si no existe, se muestra un placeholder. */
+  /** Composición gráfica de la tarjeta mientras no haya fotos: "waves" | "rings" | "petals". */
+  art: "waves" | "rings" | "petals";
+  /** Opcional: ruta a una foto real en /public. Si se define, sustituye a la composición. */
   image?: { src: string; alt: string };
   /**
    * Contenido de la página dedicada (/sesiones/[id]).
@@ -171,8 +171,7 @@ export const sessions: Session[] = [
     icon: "hands",
     status: "available",
     homeService: true,
-    imageHint:
-      "Foto sugerida: manos abiertas sobre una persona recostada, luz natural cálida, tonos neutros.",
+    art: "rings",
     page: {
       seoTitle: "Reiki en Costa Rica: sesiones de balance energético",
       seoDescription:
@@ -234,8 +233,7 @@ export const sessions: Session[] = [
     icon: "sparkles",
     status: "available",
     homeService: true,
-    imageHint:
-      "Foto sugerida: detalle del espacio con plantas, velas o textiles naturales, ambiente sereno.",
+    art: "petals",
     page: {
       seoTitle: "Sesión holística personalizada en Costa Rica",
       seoDescription:
@@ -291,7 +289,7 @@ export const sessions: Session[] = [
     benefits: ["Nuevas experiencias", "Mismo espacio de calma"],
     icon: "leaf",
     status: "coming-soon",
-    imageHint: "Foto sugerida: composición abstracta natural (hojas, piedras, agua) en tonos tierra.",
+    art: "waves",
   },
 ];
 
@@ -373,8 +371,6 @@ export const about = {
     { title: "Respeto", text: "Vos decidís qué querés vivir y qué preferís dejar fuera." },
     { title: "Calma", text: "Un ambiente pensado para que el cuerpo y la mente descansen." },
   ],
-  imageHint:
-    "Foto sugerida: el espacio de Kurimba con luz natural, plantas, textiles en tonos tierra y una camilla o cojines. Ambiente cálido y ordenado.",
 } as const;
 
 /* ------------------------------------------------------------

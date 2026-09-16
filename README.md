@@ -63,17 +63,17 @@ Añadí un objeto al arreglo `sessions`:
   benefits: ["…", "…"],
   icon: "wind",              // hands | sparkles | leaf | wind | heart
   status: "available",       // o "coming-soon"
-  imageHint: "Foto sugerida: …",
+  art: "waves",             // waves | rings | petals
   image: { src: "/sesiones/meditacion.jpg", alt: "…" }, // opcional
 }
 ```
 
-### Fotografías
+### Imágenes
 
-Mientras no haya fotos definitivas, cada espacio muestra un placeholder con la indicación del tipo de imagen recomendada. Para reemplazarlo:
-
-1. Guardá la foto en `public/` (por ejemplo `public/sesiones/reiki.jpg`).
-2. Pasá `image={{ src, alt }}` al componente `ImagePlaceholder` correspondiente, o completá el campo `image` de la sesión en la configuración.
+El sitio no depende de fotografías: en su lugar usa composiciones gráficas con la identidad de la
+marca (`src/components/ui/Artwork.tsx`, variantes `waves`, `rings` y `petals`). Si más adelante
+hay fotos, basta con pasar `image={{ src, alt }}` al componente o completar el campo `image` de la
+sesión en la configuración: la foto sustituye a la composición automáticamente.
 
 ## Páginas y SEO
 
@@ -85,7 +85,7 @@ Mientras no haya fotos definitivas, cada espacio muestra un placeholder con la i
 | `/sesiones/sesion-holistica`  | Página dedicada de la sesión holística personalizada |
 | `/nosotros`                   | Sobre Kurimba y testimonios                          |
 | `/preguntas-frecuentes`       | FAQ con datos estructurados FAQPage                  |
-| `/contacto`                   | Contacto y formulario                                |
+| `/contacto`                   | Canales de contacto y horarios                       |
 | `/aviso-de-privacidad`        | Aviso de privacidad (texto editable)                 |
 | `/agendar`                    | Redirige a WhatsApp con mensaje precargado (`?sesion=reiki` para una sesión) |
 | `/sitemap.xml`                | Sitemap generado automáticamente                     |
@@ -115,10 +115,6 @@ en el cliente). Lighthouse en producción: SEO 100, accesibilidad 100, buenas pr
 El sitio está desplegado en Vercel (proyecto `kurimba`). Cada `git push` a `main` con la
 integración de GitHub, o `npx vercel deploy --prod`, publica una nueva versión.
 
-## Formulario de contacto
-
-El formulario valida en el cliente y envía a `src/app/api/contact/route.ts`, que vuelve a validar y por ahora registra el mensaje en la consola del servidor. Para recibir los mensajes por correo, conectá un proveedor (Resend, SendGrid, Nodemailer) en el punto marcado con `[PENDIENTE]` dentro de ese archivo.
-
 ## Estructura
 
 ```
@@ -131,13 +127,13 @@ src/
 │   ├── not-found.tsx       # 404 en español
 │   ├── sesiones/           # índice + [slug] por sesión
 │   ├── nosotros/  preguntas-frecuentes/  contacto/  aviso-de-privacidad/
-│   └── api/contact/route.ts
+│   └── agendar/route.ts    # redirección a WhatsApp
 ├── config/site.ts          # TODO el contenido editable
 ├── lib/
 │   ├── whatsapp.ts         # construcción del enlace de WhatsApp
 │   └── utils.ts
 └── components/
-    ├── ui/                 # Button, Logo, SectionHeading, Reveal, ImagePlaceholder,
+    ├── ui/                 # Button, Logo, SectionHeading, Reveal, Artwork,
     │                       # PageHeader, Breadcrumbs, JsonLd…
     ├── layout/             # Navbar, Footer, WhatsAppFloat
     └── sections/           # Hero, Intro, Sessions, Benefits, HowItWorks, Reiki,
