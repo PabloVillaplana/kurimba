@@ -104,7 +104,7 @@ en el cliente). Lighthouse en producción: SEO 100, accesibilidad 100, buenas pr
 ### Enviar el sitemap a Google
 
 1. Entrá a [Google Search Console](https://search.google.com/search-console) y agregá la propiedad
-   con el dominio del sitio (`brand.url` en `src/config/site.ts`).
+   de dominio `kurimba.cr` (`brand.url` en `src/config/site.ts`).
 2. Verificá la propiedad (registro DNS o etiqueta HTML; si usás etiqueta, pegá el código en
    `seo.googleSiteVerification` dentro de `src/config/site.ts` y redeployá).
 3. En **Sitemaps**, enviá `https://TU-DOMINIO/sitemap.xml`.
@@ -112,8 +112,10 @@ en el cliente). Lighthouse en producción: SEO 100, accesibilidad 100, buenas pr
 
 ## Deploy
 
-El sitio está desplegado en Vercel (proyecto `kurimba`). Cada `git push` a `main` con la
-integración de GitHub, o `npx vercel deploy --prod`, publica una nueva versión.
+El sitio está desplegado en Vercel (proyecto `kurimba`) en **https://kurimba.cr**. Cada
+`git push` a `main` con la integración de GitHub, o `npx vercel deploy --prod`, publica una nueva
+versión. `kurimba.vercel.app` y `www.kurimba.cr` redirigen de forma permanente al dominio principal
+(ver `next.config.ts`).
 
 ## Estructura
 

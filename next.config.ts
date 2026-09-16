@@ -13,6 +13,23 @@ const nextConfig: NextConfig = {
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },
+  /** Redirige el dominio de Vercel y www al dominio principal para evitar contenido duplicado. */
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "kurimba.vercel.app" }],
+        destination: "https://kurimba.cr/:path*",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.kurimba.cr" }],
+        destination: "https://kurimba.cr/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

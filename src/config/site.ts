@@ -22,7 +22,7 @@ export const brand = {
   description:
     "En Kurimba te ofrecemos sesiones y experiencias holísticas creadas para ayudarte a bajar el ritmo, liberar tensiones y reconectar con tu bienestar físico, mental y emocional.",
   /** URL pública del sitio. Se usa para SEO y para compartir en redes. */
-  url: "https://kurimba.vercel.app", // [PENDIENTE] cambiar cuando exista dominio propio
+  url: "https://kurimba.cr",
   locale: "es_CR",
 } as const;
 
