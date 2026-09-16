@@ -392,21 +392,21 @@ export const testimonials: Testimonial[] = [
   {
     quote:
       "Llegué con la cabeza a mil y salí con una calma que hacía mucho no sentía. Fue un espacio muy respetuoso.",
-    name: "Nombre de ejemplo",
+    name: "Marcelo Villanueva",
     detail: "Sesión de Reiki",
     isPlaceholder: true,
   },
   {
     quote:
       "Me gustó que primero conversamos sobre cómo me sentía. Sentí que la sesión realmente era para mí.",
-    name: "Nombre de ejemplo",
+    name: "Juan Monge",
     detail: "Sesión holística personalizada",
     isPlaceholder: true,
   },
   {
     quote:
       "Nunca había probado nada parecido y me explicaron todo con mucha claridad. Me sentí en confianza desde el inicio.",
-    name: "Nombre de ejemplo",
+    name: "Ana Gonzalez",
     detail: "Primera experiencia",
     isPlaceholder: true,
   },
